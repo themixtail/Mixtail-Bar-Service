@@ -289,21 +289,24 @@
   <div id="hero-sticky" class="w-full h-screen overflow-hidden bg-black flex items-center justify-center relative">
     <canvas id="hero-canvas" class="w-full h-full block" style="width: 100vw; height: 100vh;"></canvas>
 
-    <!-- Luxury Brand Storytelling Text Overlay Layer (Mobile-Specific Resized & Centered Typography) -->
-    <div id="story-overlay-container" class="absolute inset-0 z-20 pointer-events-none flex items-center justify-center px-4 md:px-6 max-w-5xl mx-auto">
+    <!-- Soft Upper-Middle Vignette Gradient for Contrast behind Mobile Text -->
+    <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/80 via-black/40 to-transparent pointer-events-none z-10 md:hidden"></div>
+
+    <!-- Luxury Brand Storytelling Text Overlay Layer (Upper-Middle Mobile Positioning & ~36px Bold Typography) -->
+    <div id="story-overlay-container" class="absolute inset-0 z-20 pointer-events-none flex items-start pt-24 sm:pt-28 md:pt-0 md:items-center justify-center px-4 md:px-6 max-w-5xl mx-auto">
       <!-- Message 1 -->
-      <div id="story-text-0" class="story-phrase absolute text-center text-2xl sm:text-5xl lg:text-7xl font-display-md font-bold text-white tracking-tight leading-snug drop-shadow-[0_10px_35px_rgba(0,0,0,0.98)] opacity-0 px-4 max-w-[90vw]">
+      <div id="story-text-0" class="story-phrase absolute text-center text-[32px] sm:text-[36px] md:text-5xl lg:text-7xl font-display-md font-bold text-white tracking-tight leading-snug drop-shadow-[0_4px_30px_rgba(0,0,0,0.98)] drop-shadow-[0_0_20px_rgba(245,158,11,0.25)] opacity-0 px-4 max-w-[95vw]">
         More Than a Bar.
       </div>
 
       <!-- Message 2 -->
-      <div id="story-text-1" class="story-phrase absolute text-center text-xl sm:text-4xl lg:text-6xl font-display-md font-bold text-white tracking-tight leading-snug drop-shadow-[0_10px_35px_rgba(0,0,0,0.98)] opacity-0 max-w-3xl px-4 max-w-[90vw]">
+      <div id="story-text-1" class="story-phrase absolute text-center text-[28px] sm:text-[36px] md:text-4xl lg:text-6xl font-display-md font-bold text-white tracking-tight leading-snug drop-shadow-[0_4px_30px_rgba(0,0,0,0.98)] drop-shadow-[0_0_20px_rgba(245,158,11,0.25)] opacity-0 max-w-3xl px-4 max-w-[95vw]">
         An Experience Your Guests Will Remember.
       </div>
 
       <!-- Final Message -->
-      <div id="story-text-2" class="story-phrase absolute text-center flex flex-col items-center justify-center gap-2 sm:gap-4 drop-shadow-[0_10px_35px_rgba(0,0,0,0.98)] opacity-0 max-w-4xl px-4 max-w-[90vw]">
-        <h1 class="text-xl sm:text-4xl lg:text-6xl font-display-md font-bold text-white tracking-tight leading-snug">
+      <div id="story-text-2" class="story-phrase absolute text-center flex flex-col items-center justify-center gap-2 sm:gap-4 drop-shadow-[0_4px_30px_rgba(0,0,0,0.98)] drop-shadow-[0_0_20px_rgba(245,158,11,0.25)] opacity-0 max-w-4xl px-4 max-w-[95vw]">
+        <h1 class="text-[26px] sm:text-[36px] md:text-4xl lg:text-6xl font-display-md font-bold text-white tracking-tight leading-snug">
           Welcome to the Mixtail Experience.
         </h1>
         <p class="text-xs sm:text-xl lg:text-2xl text-amber-300/95 font-body-lg tracking-wide font-semibold mt-1">
@@ -572,7 +575,7 @@
       <img class="w-full h-full object-cover" src="gallery-images/20260404_194929(1).jpg" alt="Mixtail Event Photo 1"/>
     </div>
     <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
-      <video class="w-full h-full object-cover" autoplay loop muted playsinline src="gallery-videos/VID_20260131_213853976.mp4"></video>
+      <video class="w-full h-full object-cover" preload="metadata" autoplay loop muted playsinline src="gallery-videos/VID_20260131_213853976.mp4"></video>
       <div class="absolute top-4 right-4 w-9 h-9 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center pointer-events-none">
         <span class="material-symbols-outlined text-white text-lg md:text-xl">play_arrow</span>
       </div>
@@ -581,7 +584,7 @@
       <img class="w-full h-full object-cover" src="gallery-images/20260404_194936.jpg" alt="Mixtail Event Photo 2"/>
     </div>
     <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
-      <video class="w-full h-full object-cover" autoplay loop muted playsinline src="gallery-videos/lv_0_20251203103043.mp4"></video>
+      <video class="w-full h-full object-cover" preload="metadata" autoplay loop muted playsinline src="gallery-videos/lv_0_20251203103043.mp4"></video>
       <div class="absolute top-4 right-4 w-9 h-9 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center pointer-events-none">
         <span class="material-symbols-outlined text-white text-lg md:text-xl">play_arrow</span>
       </div>
@@ -590,7 +593,7 @@
       <img class="w-full h-full object-cover" src="gallery-images/20260404_194946.jpg" alt="Mixtail Event Photo 3"/>
     </div>
     <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
-      <video class="w-full h-full object-cover" autoplay loop muted playsinline src="gallery-videos/lv_0_20260507180440.mp4"></video>
+      <video class="w-full h-full object-cover" preload="metadata" autoplay loop muted playsinline src="gallery-videos/lv_0_20260507180440.mp4"></video>
       <div class="absolute top-4 right-4 w-9 h-9 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center pointer-events-none">
         <span class="material-symbols-outlined text-white text-lg md:text-xl">play_arrow</span>
       </div>
@@ -1291,12 +1294,12 @@
             let renderW, renderH, offsetX, offsetY;
 
             if (isMobileScreen) {
-                // Mobile-only Cover Scale Mode: Glass occupies 100% of Viewport Height, 0 black letterbox bars
+                // Mobile-only Refined Scale Mode: Glass size reduced by ~22% for full glass visibility, perfectly centered
                 const imgW = img.naturalWidth || 1920;
                 const imgH = img.naturalHeight || 1080;
 
-                // 1.25x scale factor ensures glass is zoomed in as main focal point on mobile portrait screens
-                const scale = Math.max(cW / imgW, cH / imgH) * 1.25;
+                // 0.95x scale factor reduces size by ~22% compared to 1.25x, making full glass visible
+                const scale = Math.max(cW / imgW, cH / imgH) * 0.95;
 
                 renderW = imgW * scale;
                 renderH = imgH * scale;
