@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+gallery-videos/lv_0_20260213121026.mp4
+gallery-videos/lv_0_20251029123943.mp4

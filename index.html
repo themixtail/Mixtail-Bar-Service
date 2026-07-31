@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+
+<html class="dark overflow-x-hidden" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<title>Mixtail | Master Mixology &amp; High-End Bar Service</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<!-- GSAP & ScrollTrigger Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ffb86b",
+                        "on-surface": "#ffffff",
+                        "background": "#000000",
+                        "surface-container-low": "#111111",
+                        "outline-variant": "#434846",
+                        "inverse-on-surface": "#2f3131",
+                        "surface-container-highest": "#333535",
+                        "primary-fixed": "#e0e3e1",
+                        "secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#444846",
+                        "on-secondary-fixed": "#ffffff",
+                        "surface-tint": "#c4c7c5",
+                        "primary-fixed-dim": "#c4c7c5",
+                        "on-background": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#333535",
+                        "inverse-primary": "#5b5f5e",
+                        "surface-container-high": "#282a2b",
+                        "outline": "#8d9290",
+                        "on-secondary-container": "#ffffff",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffdcbd",
+                        "on-tertiary-container": "#ffffff",
+                        "tertiary": "#ffffff",
+                        "secondary-fixed": "#ffffff",
+                        "primary": "#ffffff",
+                        "inverse-surface": "#ffffff",
+                        "on-primary-fixed": "#ffffff",
+                        "tertiary-fixed-dim": "#ffffff",
+                        "surface-dim": "#000000",
+                        "tertiary-container": "#1a0b00",
+                        "surface-bright": "#1a1c1c",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "surface-container": "#000000",
+                        "on-surface-variant": "#c3c7c5",
+                        "on-tertiary-fixed-variant": "#ffffff",
+                        "on-tertiary-fixed": "#ffffff",
+                        "on-secondary-fixed-variant": "#ffffff",
+                        "on-primary-container": "#787c7a",
+                        "secondary-container": "#ed9000",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#000000",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#000000",
+                        "on-error": "#690005",
+                        "surface": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-desktop": "80px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "container-padding-mobile": "20px",
+                        "section-gap": "120px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "display-md": ["Playfair Display"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-md": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        html, body {
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Glassmorphism Buttons & White Text System */
+        button, .btn-glass {
+            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.25) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        button:hover, .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.22) !important;
+            border-color: rgba(255, 255, 255, 0.5) !important;
+            color: #ffffff !important;
+        }
+
+        .amber-glow {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+        }
+
+        /* Seamless Color Match + Smooth Ambient Gradient Fading */
+        .ambient-gradient-bg {
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% 10%, rgba(245, 158, 11, 0.12) 0%, transparent 65%),
+                radial-gradient(ellipse 60% 40% at 15% 45%, rgba(168, 85, 247, 0.10) 0%, transparent 55%),
+                radial-gradient(ellipse 60% 40% at 85% 65%, rgba(16, 185, 129, 0.08) 0%, transparent 55%),
+                radial-gradient(ellipse 70% 50% at 50% 90%, rgba(239, 68, 68, 0.08) 0%, transparent 60%),
+                #000000;
+        }
+
+        /* Animated Glowing Divider Line */
+        .animated-line-h {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.15) 15%, rgba(245, 158, 11, 0.8) 50%, rgba(236, 72, 153, 0.8) 85%, transparent 100%);
+            background-size: 200% 100%;
+            animation: lineShimmer 5s linear infinite;
+        }
+
+        @keyframes lineShimmer {
+            0% { background-position: -100% 0; }
+            100% { background-position: 100% 0; }
+        }
+
+        .light-leak {
+            position: absolute;
+            width: 55vw;
+            height: 55vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(236, 72, 153, 0.04) 40%, transparent 70%);
+            filter: blur(100px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Cinematic Story Overlay Styling */
+        .story-phrase {
+            will-change: transform, opacity;
+            transition: opacity 0.1s linear, transform 0.1s linear;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333535;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffffff;
+        }
+
+        #hero-canvas {
+            pointer-events: none;
+        }
+
+        /* Strict Responsive Mobile-Only Layout Rules (max-width: 768px) */
+        @media (max-width: 768px) {
+            .desktop-nav-links {
+                display: none !important;
+            }
+            .mobile-nav-controls {
+                display: flex !important;
+            }
+        }
+        @media (min-width: 769px) {
+            .desktop-nav-links {
+                display: flex !important;
+            }
+            .mobile-nav-controls {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased bg-black text-white overflow-x-hidden">
+<!-- Global Navigation Header (Desktop Untouched | Mobile Dedicated Layout: [Logo] [Book Now] [☰]) -->
+<nav class="fixed top-0 w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/10 shadow-xl transition-all duration-300">
+<div class="flex justify-between items-center px-4 md:px-container-padding-desktop py-2.5 md:py-2.5 max-w-[1440px] mx-auto">
+  <!-- Left: Logo -->
+  <a href="#" class="flex items-center gap-2 md:gap-5 group">
+    <img src="logo-icon.png" alt="Mixtail Logo" class="h-8 md:h-16 w-auto object-contain transition-transform duration-300">
+    <img src="logo-brand.png" alt="Mixtail Bar Service" class="h-9 md:h-20 w-auto object-contain brightness-200 filter contrast-125 drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]">
+  </a>
+
+  <!-- Desktop Navigation Links (Strictly 100% Untouched for > 768px) -->
+  <div class="desktop-nav-links hidden md:flex items-center gap-8">
+    <a class="font-label-sm text-label-sm text-gray-300 hover:text-white transition-colors" href="#events-we-serve">Events</a>
+    <a class="font-label-sm text-label-sm text-gray-300 hover:text-white transition-colors" href="#signature-experiences">Experiences</a>
+    <a class="font-label-sm text-label-sm text-gray-300 hover:text-white transition-colors" href="#gallery">Gallery</a>
+    <a class="font-label-sm text-label-sm text-gray-300 hover:text-white transition-colors" href="#instagram">Instagram</a>
+    <a class="font-label-sm text-label-sm text-gray-300 hover:text-white transition-colors" href="#google-reviews">Reviews</a>
+    <div class="h-5 w-[1px] bg-white/25"></div>
+    <button onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})" class="px-6 py-2.5 rounded-full font-label-sm text-label-sm text-white transition-all duration-300 bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 hover:border-white/60 shadow-xl cursor-pointer whitespace-nowrap">Book Now</button>
+  </div>
+
+  <!-- Mobile Only Header Control Layout: [ Book Now ] [ ☰ ] -->
+  <div class="mobile-nav-controls flex md:hidden items-center gap-2.5">
+    <button onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})" class="px-4 py-2.5 min-h-[44px] rounded-full font-label-sm text-xs font-bold text-white bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 border border-amber-400/40 shadow-lg cursor-pointer whitespace-nowrap flex items-center justify-center active:scale-95 transition-transform">
+      Book Now
+    </button>
+    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-white/10 backdrop-blur-md border border-white/25 flex items-center justify-center text-white cursor-pointer active:scale-95 transition-transform shadow-lg" aria-label="Toggle Navigation Menu">
+      <span class="material-symbols-outlined text-2xl text-white">menu</span>
+    </button>
+  </div>
+</div>
+</nav>
+
+<!-- Mobile Slide-In Navigation Drawer -->
+<div id="mobile-drawer" class="fixed inset-0 z-[90] bg-black/95 backdrop-blur-2xl transition-all duration-300 transform translate-x-full md:hidden flex flex-col justify-between p-6 pt-20 overflow-y-auto">
+  <button onclick="toggleMobileMenu()" class="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white cursor-pointer" aria-label="Close Menu">
+    <span class="material-symbols-outlined text-2xl">close</span>
+  </button>
+  <div class="flex flex-col gap-5 my-auto text-center">
+    <a onclick="toggleMobileMenu()" href="#services" class="text-xl font-display-md font-bold text-white hover:text-amber-400 transition-colors py-2.5 border-b border-white/10">Why Choose Us</a>
+    <a onclick="toggleMobileMenu()" href="#events-we-serve" class="text-xl font-display-md font-bold text-white hover:text-amber-400 transition-colors py-2.5 border-b border-white/10">Events</a>
+    <a onclick="toggleMobileMenu()" href="#signature-experiences" class="text-xl font-display-md font-bold text-white hover:text-amber-400 transition-colors py-2.5 border-b border-white/10">Experiences</a>
+    <a onclick="toggleMobileMenu()" href="#gallery" class="text-xl font-display-md font-bold text-white hover:text-amber-400 transition-colors py-2.5 border-b border-white/10">Gallery</a>
+    <a onclick="toggleMobileMenu()" href="#instagram" class="text-xl font-display-md font-bold text-white hover:text-amber-400 transition-colors py-2.5 border-b border-white/10">Instagram</a>
+    <a onclick="toggleMobileMenu()" href="#google-reviews" class="text-xl font-display-md font-bold text-white hover:text-amber-400 transition-colors py-2.5 border-b border-white/10">Reviews</a>
+  </div>
+  <div class="pt-6 text-center">
+    <button onclick="toggleMobileMenu(); document.querySelector('#contact').scrollIntoView({behavior:'smooth'})" class="w-full py-4 rounded-full font-headline-lg text-base font-bold text-white bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 shadow-2xl border border-amber-400/40 cursor-pointer">
+      Book Event Now
+    </button>
+  </div>
+</div>
+
+<main class="relative bg-black text-white overflow-x-hidden">
+<!-- Scroll-Bound Canvas Hero Section with GSAP ScrollTrigger Pinning -->
+<section id="hero-scroll-container" class="relative w-full bg-black">
+  <div id="hero-sticky" class="w-full h-screen overflow-hidden bg-black flex items-center justify-center relative">
+    <canvas id="hero-canvas" class="w-full h-full block" style="width: 100vw; height: 100vh;"></canvas>
+
+    <!-- Luxury Brand Storytelling Text Overlay Layer (Mobile-Specific Resized & Centered Typography) -->
+    <div id="story-overlay-container" class="absolute inset-0 z-20 pointer-events-none flex items-center justify-center px-4 md:px-6 max-w-5xl mx-auto">
+      <!-- Message 1 -->
+      <div id="story-text-0" class="story-phrase absolute text-center text-2xl sm:text-5xl lg:text-7xl font-display-md font-bold text-white tracking-tight leading-snug drop-shadow-[0_10px_35px_rgba(0,0,0,0.98)] opacity-0 px-4 max-w-[90vw]">
+        More Than a Bar.
+      </div>
+
+      <!-- Message 2 -->
+      <div id="story-text-1" class="story-phrase absolute text-center text-xl sm:text-4xl lg:text-6xl font-display-md font-bold text-white tracking-tight leading-snug drop-shadow-[0_10px_35px_rgba(0,0,0,0.98)] opacity-0 max-w-3xl px-4 max-w-[90vw]">
+        An Experience Your Guests Will Remember.
+      </div>
+
+      <!-- Final Message -->
+      <div id="story-text-2" class="story-phrase absolute text-center flex flex-col items-center justify-center gap-2 sm:gap-4 drop-shadow-[0_10px_35px_rgba(0,0,0,0.98)] opacity-0 max-w-4xl px-4 max-w-[90vw]">
+        <h1 class="text-xl sm:text-4xl lg:text-6xl font-display-md font-bold text-white tracking-tight leading-snug">
+          Welcome to the Mixtail Experience.
+        </h1>
+        <p class="text-xs sm:text-xl lg:text-2xl text-amber-300/95 font-body-lg tracking-wide font-semibold mt-1">
+          Crafting Experiences. Pouring Perfection.
+        </p>
+      </div>
+    </div>
+
+    <!-- Animated Scroll Down Indicator -->
+    <div id="scroll-down-indicator" class="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-700 pointer-events-none z-20 opacity-100">
+      <span class="text-[10px] md:text-xs uppercase tracking-[0.25em] text-white/80 font-label-sm drop-shadow-md">Scroll Down</span>
+      <div class="w-6 h-10 md:w-7 md:h-11 border-2 border-white/50 rounded-full flex justify-center p-1 backdrop-blur-md bg-black/30 shadow-lg">
+        <div class="w-1.5 h-2.5 md:h-3 bg-white rounded-full animate-bounce"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Post-Hero Container Seamlessly Aligned to the Unpinned Hero Seam -->
+<div class="ambient-gradient-bg relative z-10 overflow-x-hidden">
+
+<!-- About / Metrics Grid (Seamless Top Connection) -->
+<section class="py-10 md:py-16 px-4 md:px-container-padding-desktop max-w-[1440px] mx-auto relative z-10 border-b border-white/10">
+  <div class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/15 relative z-10">
+    <div class="p-4 md:p-8 text-center">
+      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2">100+</span>
+      <p class="font-label-sm text-gray-300 uppercase tracking-widest text-[10px] sm:text-xs md:text-sm">Successful Events</p>
+    </div>
+    <div class="p-4 md:p-8 text-center">
+      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2">100+</span>
+      <p class="font-label-sm text-gray-300 uppercase tracking-widest text-[10px] sm:text-xs md:text-sm">Signature Cocktails</p>
+    </div>
+    <div class="p-4 md:p-8 text-center pt-4 md:pt-8">
+      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2">Nashik</span>
+      <p class="font-label-sm text-gray-300 uppercase tracking-widest text-[10px] sm:text-xs md:text-sm">Base Operations</p>
+    </div>
+    <div class="p-4 md:p-8 text-center pt-4 md:pt-8">
+      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2">4.9/5</span>
+      <p class="font-label-sm text-gray-300 uppercase tracking-widest text-[10px] sm:text-xs md:text-sm">Google Rating</p>
+    </div>
+  </div>
+</section>
+
+<!-- Services (6 Cards Grid System) -->
+<section class="py-12 md:py-section-gap relative z-10" id="services">
+<div class="px-4 md:px-container-padding-desktop max-w-[1440px] mx-auto relative">
+<div class="light-leak top-1/3 right-0 opacity-40"></div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-4 md:gap-6 relative z-10">
+<div class="max-w-2xl">
+<h2 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display-md font-bold text-white tracking-tight leading-tight">Why Choose Mixtail Bar Service ?</h2>
+</div>
+<p class="text-base sm:text-xl md:text-2xl text-gray-200 max-w-lg leading-relaxed font-body-lg">We're more than bartenders, We create premium bar experiences that leave a lasting impression on every guest.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 relative z-10">
+<!-- Service 1 -->
+<div class="glass-panel group relative rounded-2xl overflow-hidden h-[380px] sm:h-[450px]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Professional Mixologists" style="background-image: url('card-images/professional-mixologist-2.png')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+<div class="absolute bottom-0 p-6 md:p-8 w-full">
+<h3 class="font-headline-lg text-xl md:text-3xl text-white mb-2">Professional Mixologists</h3>
+<p class="font-body-md text-sm md:text-base text-gray-200 mb-4">Handcrafted cocktails prepared by experienced bartenders.</p>
+<span onclick="openCardModal(1)" class="text-white text-xs md:text-sm font-bold flex items-center gap-2 cursor-pointer transition-transform py-1">Learn More <span class="material-symbols-outlined text-sm text-white">arrow_forward</span></span>
+</div>
+</div>
+<!-- Service 2 -->
+<div class="glass-panel group relative rounded-2xl overflow-hidden h-[380px] sm:h-[450px]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Premium Bar Setup" style="background-image: url('card-images/premium-bar-setup-2.jpg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+<div class="absolute bottom-0 p-6 md:p-8 w-full">
+<h3 class="font-headline-lg text-xl md:text-3xl text-white mb-2">Premium Bar Setup</h3>
+<p class="font-body-md text-sm md:text-base text-gray-200 mb-4">Elegant mobile bars designed to complement every event.</p>
+<span onclick="openCardModal(2)" class="text-white text-xs md:text-sm font-bold flex items-center gap-2 cursor-pointer transition-transform py-1">Learn More <span class="material-symbols-outlined text-sm text-white">arrow_forward</span></span>
+</div>
+</div>
+<!-- Service 3 -->
+<div class="glass-panel group relative rounded-2xl overflow-hidden h-[380px] sm:h-[450px]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Customized Cocktail Menu" style="background-image: url('card-images/customized-cocktail-menu-2.jpg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+<div class="absolute bottom-0 p-6 md:p-8 w-full">
+<h3 class="font-headline-lg text-xl md:text-3xl text-white mb-2">Customized Cocktail Menu</h3>
+<p class="font-body-md text-sm md:text-base text-gray-200 mb-4">Signature drinks tailored to your celebration.</p>
+<span onclick="openCardModal(3)" class="text-white text-xs md:text-sm font-bold flex items-center gap-2 cursor-pointer transition-transform py-1">Learn More <span class="material-symbols-outlined text-sm text-white">arrow_forward</span></span>
+</div>
+</div>
+<!-- Service 4 -->
+<div class="glass-panel group relative rounded-2xl overflow-hidden h-[380px] sm:h-[450px]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Molecular Mixology" style="background-image: url('card-images/molecular-mixology-2.jpg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+<div class="absolute bottom-0 p-6 md:p-8 w-full">
+<h3 class="font-headline-lg text-xl md:text-3xl text-white mb-2">Molecular Mixology</h3>
+<p class="font-body-md text-sm md:text-base text-gray-200 mb-4">Smoke cocktails, cocktail caviar, jello shots, and interactive experiences.</p>
+<span onclick="openCardModal(4)" class="text-white text-xs md:text-sm font-bold flex items-center gap-2 cursor-pointer transition-transform py-1">Learn More <span class="material-symbols-outlined text-sm text-white">arrow_forward</span></span>
+</div>
+</div>
+<!-- Service 5 -->
+<div class="glass-panel group relative rounded-2xl overflow-hidden h-[380px] sm:h-[450px]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Flairtending" style="background-image: url('card-images/flairtending-2.jpg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+<div class="absolute bottom-0 p-6 md:p-8 w-full">
+<h3 class="font-headline-lg text-xl md:text-3xl text-white mb-2">Flairtending</h3>
+<p class="font-body-md text-sm md:text-base text-gray-200 mb-4">Live bottle tricks and entertaining performances.</p>
+<span onclick="openCardModal(5)" class="text-white text-xs md:text-sm font-bold flex items-center gap-2 cursor-pointer transition-transform py-1">Learn More <span class="material-symbols-outlined text-sm text-white">arrow_forward</span></span>
+</div>
+</div>
+<!-- Service 6 -->
+<div class="glass-panel group relative rounded-2xl overflow-hidden h-[380px] sm:h-[450px]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Exceptional Hospitality" style="background-image: url('card-images/exceptional-hospitality.png')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+<div class="absolute bottom-0 p-6 md:p-8 w-full">
+<h3 class="font-headline-lg text-xl md:text-3xl text-white mb-2">Exceptional Hospitality</h3>
+<p class="font-body-md text-sm md:text-base text-gray-200 mb-4">Professional, friendly service from start to finish.</p>
+<span onclick="openCardModal(6)" class="text-white text-xs md:text-sm font-bold flex items-center gap-2 cursor-pointer transition-transform py-1">Learn More <span class="material-symbols-outlined text-sm text-white">arrow_forward</span></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Events We Serve Section (Clean Minimal Mobile Layout) -->
+<section class="py-12 md:py-section-gap relative z-10 border-t border-white/10" id="events-we-serve">
+<div class="px-4 md:px-container-padding-desktop max-w-[1440px] mx-auto relative">
+  <div class="light-leak top-1/2 left-0 opacity-40"></div>
+  <div class="text-center max-w-3xl mx-auto mb-10 md:mb-16 relative z-10">
+    <h2 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display-md font-bold text-white tracking-tight leading-tight mb-3 md:mb-4">Events We Serve</h2>
+    <p class="text-base sm:text-xl md:text-2xl text-gray-300 font-body-lg">Crafting bespoke bar experiences for every milestone and celebration.</p>
+  </div>
+  
+  <div class="relative z-10 max-w-5xl mx-auto">
+    <!-- Grid of Events separated by animated lines -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
+      <!-- 1. Weddings -->
+      <div class="p-6 sm:p-10 flex flex-col items-center justify-center text-center relative">
+        <div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 md:mb-5 text-white border border-white/15 shadow-xl">
+          <span class="material-symbols-outlined text-2xl md:text-3xl text-white">favorite</span>
+        </div>
+        <h3 class="font-headline-lg text-white text-xl md:text-2xl font-bold tracking-wide">Weddings</h3>
+        <div class="hidden lg:block absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+      </div>
+
+      <!-- 2. Birthday Parties -->
+      <div class="p-6 sm:p-10 flex flex-col items-center justify-center text-center relative border-t sm:border-t-0 border-white/10">
+        <div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 md:mb-5 text-white border border-white/15 shadow-xl">
+          <span class="material-symbols-outlined text-2xl md:text-3xl text-white">cake</span>
+        </div>
+        <h3 class="font-headline-lg text-white text-xl md:text-2xl font-bold tracking-wide">Birthday Parties</h3>
+        <div class="hidden lg:block absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+      </div>
+
+      <!-- 3. Private Parties -->
+      <div class="p-6 sm:p-10 flex flex-col items-center justify-center text-center relative border-t sm:border-t-0 border-white/10">
+        <div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 md:mb-5 text-white border border-white/15 shadow-xl">
+          <span class="material-symbols-outlined text-2xl md:text-3xl text-white">nightlife</span>
+        </div>
+        <h3 class="font-headline-lg text-white text-xl md:text-2xl font-bold tracking-wide">Private Parties</h3>
+      </div>
+    </div>
+
+    <!-- Animated Horizontal Glowing Line Divider -->
+    <div class="w-full my-2 md:my-4">
+      <div class="animated-line-h"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
+      <!-- 4. Corporate Events -->
+      <div class="p-6 sm:p-10 flex flex-col items-center justify-center text-center relative">
+        <div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 md:mb-5 text-white border border-white/15 shadow-xl">
+          <span class="material-symbols-outlined text-2xl md:text-3xl text-white">business_center</span>
+        </div>
+        <h3 class="font-headline-lg text-white text-xl md:text-2xl font-bold tracking-wide">Corporate Events</h3>
+        <div class="hidden lg:block absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+      </div>
+
+      <!-- 5. Pool Parties & Sundowners -->
+      <div class="p-6 sm:p-10 flex flex-col items-center justify-center text-center relative border-t sm:border-t-0 border-white/10">
+        <div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 md:mb-5 text-white border border-white/15 shadow-xl">
+          <span class="material-symbols-outlined text-2xl md:text-3xl text-white">pool</span>
+        </div>
+        <h3 class="font-headline-lg text-white text-xl md:text-2xl font-bold tracking-wide">Pool Parties & Sundowners</h3>
+        <div class="hidden lg:block absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+      </div>
+
+      <!-- 6. Concert & Music Festivals -->
+      <div class="p-6 sm:p-10 flex flex-col items-center justify-center text-center relative border-t sm:border-t-0 border-white/10">
+        <div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 md:mb-5 text-white border border-white/15 shadow-xl">
+          <span class="material-symbols-outlined text-2xl md:text-3xl text-white">queue_music</span>
+        </div>
+        <h3 class="font-headline-lg text-white text-xl md:text-2xl font-bold tracking-wide">Concert & Music Festivals</h3>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Our Signature Experiences Section -->
+<section class="py-12 md:py-section-gap relative z-10 border-t border-white/10" id="signature-experiences">
+<div class="px-4 md:px-container-padding-desktop max-w-[1440px] mx-auto relative">
+  <div class="light-leak top-1/2 right-10 opacity-40"></div>
+  <div class="text-center max-w-3xl mx-auto mb-10 md:mb-16 relative z-10">
+    <h2 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display-md font-bold text-white tracking-tight leading-tight mb-3 md:mb-4">Our Signature Experiences</h2>
+    <p class="text-base sm:text-xl md:text-2xl text-gray-300 font-body-lg">Elevating event mixology with craft, theatre, and luxury design.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 relative z-10">
+    <!-- 1. Signature Cocktails -->
+    <div class="glass-panel group relative rounded-2xl overflow-hidden h-[340px] sm:h-[380px] flex flex-col justify-end p-6 md:p-8">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('card-images/customized-cocktail-menu-2.jpg')"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+      <div class="relative z-10">
+        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mb-3 md:mb-4 text-white border border-white/20">
+          <span class="material-symbols-outlined text-xl md:text-2xl text-white">local_bar</span>
+        </div>
+        <h3 class="font-headline-lg text-white text-xl md:text-2xl font-bold mb-1 md:mb-2">Signature Cocktails</h3>
+        <p class="font-body-md text-gray-300 text-xs md:text-sm">Bespoke recipes and artisanal flavor profiles tailored for your guests.</p>
+      </div>
+    </div>
+    <!-- 2. Molecular Mixology -->
+    <div class="glass-panel group relative rounded-2xl overflow-hidden h-[340px] sm:h-[380px] flex flex-col justify-end p-6 md:p-8">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('card-images/molecular-mixology-2.jpg')"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+      <div class="relative z-10">
+        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mb-3 md:mb-4 text-white border border-white/20">
+          <span class="material-symbols-outlined text-xl md:text-2xl text-white">science</span>
+        </div>
+        <h3 class="font-headline-lg text-white text-xl md:text-2xl font-bold mb-1 md:mb-2">Molecular Mixology</h3>
+        <p class="font-body-md text-gray-300 text-xs md:text-sm">Cocktail caviar, smoke effects, spheres, and interactive liquid drama.</p>
+      </div>
+    </div>
+    <!-- 3. Flair Bartending -->
+    <div class="glass-panel group relative rounded-2xl overflow-hidden h-[340px] sm:h-[380px] flex flex-col justify-end p-6 md:p-8">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('card-images/flairtending-2.jpg')"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+      <div class="relative z-10">
+        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mb-3 md:mb-4 text-white border border-white/20">
+          <span class="material-symbols-outlined text-xl md:text-2xl text-white">sports_bar</span>
+        </div>
+        <h3 class="font-headline-lg text-white text-xl md:text-2xl font-bold mb-1 md:mb-2">Flair Bartending</h3>
+        <p class="font-body-md text-gray-300 text-xs md:text-sm">High-energy bottle acrobatics and dazzling performance behind the bar.</p>
+      </div>
+    </div>
+    <!-- 4. Premium Bar Décor -->
+    <div class="glass-panel group relative rounded-2xl overflow-hidden h-[340px] sm:h-[380px] flex flex-col justify-end p-6 md:p-8">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('card-images/premium-bar-setup-2.jpg')"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+      <div class="relative z-10">
+        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mb-3 md:mb-4 text-white border border-white/20">
+          <span class="material-symbols-outlined text-xl md:text-2xl text-white">auto_awesome</span>
+        </div>
+        <h3 class="font-headline-lg text-white text-xl md:text-2xl font-bold mb-1 md:mb-2">Premium Bar Décor</h3>
+        <p class="font-body-md text-gray-300 text-xs md:text-sm">Luxury mobile setups, ambient lighting, and bespoke aesthetic styling.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Gallery Section (Featuring Photos & Live Videos Showcase) -->
+<section class="py-12 md:py-section-gap px-4 md:px-container-padding-desktop max-w-[1440px] mx-auto relative z-10 border-t border-white/10" id="gallery">
+  <div class="light-leak bottom-0 left-1/3 opacity-40"></div>
+  <div class="text-center max-w-3xl mx-auto mb-8 md:mb-12 relative z-10">
+    <h2 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display-md font-bold text-white tracking-tight leading-tight mb-3 md:mb-4">The Liquid Art Gallery</h2>
+    <p class="text-base sm:text-xl md:text-2xl text-gray-300 font-body-lg">Capturing moments of mixology art, live performances, and luxury celebrations.</p>
+  </div>
+
+  <!-- Main Showcase Grid of Photos & Videos -->
+  <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 relative z-10">
+    <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
+      <img class="w-full h-full object-cover" src="gallery-images/20260404_194929(1).jpg" alt="Mixtail Event Photo 1"/>
+    </div>
+    <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
+      <video class="w-full h-full object-cover" autoplay loop muted playsinline src="gallery-videos/VID_20260131_213853976.mp4"></video>
+      <div class="absolute top-4 right-4 w-9 h-9 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center pointer-events-none">
+        <span class="material-symbols-outlined text-white text-lg md:text-xl">play_arrow</span>
+      </div>
+    </div>
+    <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
+      <img class="w-full h-full object-cover" src="gallery-images/20260404_194936.jpg" alt="Mixtail Event Photo 2"/>
+    </div>
+    <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
+      <video class="w-full h-full object-cover" autoplay loop muted playsinline src="gallery-videos/lv_0_20251203103043.mp4"></video>
+      <div class="absolute top-4 right-4 w-9 h-9 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center pointer-events-none">
+        <span class="material-symbols-outlined text-white text-lg md:text-xl">play_arrow</span>
+      </div>
+    </div>
+    <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
+      <img class="w-full h-full object-cover" src="gallery-images/20260404_194946.jpg" alt="Mixtail Event Photo 3"/>
+    </div>
+    <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
+      <video class="w-full h-full object-cover" autoplay loop muted playsinline src="gallery-videos/lv_0_20260507180440.mp4"></video>
+      <div class="absolute top-4 right-4 w-9 h-9 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center pointer-events-none">
+        <span class="material-symbols-outlined text-white text-lg md:text-xl">play_arrow</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- View More Button -->
+  <div class="text-center mt-8 md:mt-12 relative z-10">
+    <button onclick="openFullGalleryModal()" class="px-8 py-3.5 md:px-10 md:py-4 rounded-full font-label-sm text-xs md:text-sm text-white transition-transform inline-flex items-center gap-2 md:gap-3 cursor-pointer">
+      <span>View More</span>
+      <span class="material-symbols-outlined text-base md:text-lg">grid_view</span>
+    </button>
+  </div>
+</section>
+
+<!-- Instagram Feed Section (Edge-to-Edge Full Mobile Panel) -->
+<section class="py-12 md:py-section-gap relative z-10 border-t border-white/10" id="instagram">
+  <div class="px-4 md:px-container-padding-desktop max-w-[1440px] mx-auto relative">
+    <div class="light-leak top-1/2 right-0 opacity-30"></div>
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 md:mb-10 gap-4 relative z-10">
+      <div>
+        <h2 class="text-2xl sm:text-4xl md:text-5xl font-display-md font-bold text-white tracking-tight">@themixtail</h2>
+      </div>
+      <a href="https://www.instagram.com/themixtail?igsh=MTI1MTE2dGg2ajYwcg==" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center px-6 py-3 md:px-8 md:py-4 rounded-full font-label-sm text-xs md:text-sm text-white transition-transform flex items-center justify-center gap-2 md:gap-3 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 shadow-2xl border border-white/20">
+        <span>Open @themixtail On Instagram</span>
+        <span class="material-symbols-outlined text-base md:text-lg">open_in_new</span>
+      </a>
+    </div>
+
+    <!-- Edge-to-Edge Full Outer Box Instagram Embed Panel -->
+    <div class="w-full glass-panel rounded-2xl md:rounded-3xl border border-white/20 bg-black/90 relative overflow-hidden shadow-2xl z-10">
+      <iframe src="https://www.instagram.com/themixtail/embed" class="w-full h-[480px] sm:h-[600px] md:h-[700px] border-0 block" frameborder="0" scrolling="yes" allowtransparency="true"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Google Reviews Section -->
+<section class="py-12 md:py-section-gap relative z-10 border-t border-white/10" id="google-reviews">
+  <div class="px-4 md:px-container-padding-desktop max-w-[1440px] mx-auto relative">
+    <div class="light-leak top-1/3 left-10 opacity-40"></div>
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-6 relative z-10">
+      <div>
+        <div class="flex items-center gap-2 md:gap-3 mb-2">
+          <!-- Google G Icon Badge -->
+          <div class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center shadow-lg p-1">
+            <svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+          </div>
+          <span class="text-[10px] md:text-xs uppercase tracking-[0.25em] text-gray-400 font-label-sm font-bold">Google Reviews</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl md:text-5xl font-display-md font-bold text-white tracking-tight">Praise From Our Patrons</h2>
+      </div>
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+        <div class="flex items-center justify-between sm:justify-start gap-3 bg-white/5 border border-white/15 px-4 py-2.5 rounded-full backdrop-blur-md">
+          <div class="flex text-amber-400 text-base md:text-lg">
+            <span class="material-symbols-outlined text-sm md:text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-sm md:text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-sm md:text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-sm md:text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-sm md:text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+          </div>
+          <span class="text-white font-bold text-sm md:text-base">4.9 / 5.0</span>
+          <span class="text-gray-400 text-[10px] md:text-xs border-l border-white/20 pl-2 md:pl-3">Google Business</span>
+        </div>
+        <a href="https://g.page/r/CWNIB4LZk0j_EBM/review" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full font-label-sm text-xs md:text-sm text-white transition-transform flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 shadow-xl border border-white/20">
+          <span>Write a Review</span>
+          <span class="material-symbols-outlined text-base md:text-lg">open_in_new</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Google Reviews Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 relative z-10">
+      <!-- Google Review 1 -->
+      <div class="glass-panel p-6 md:p-8 rounded-2xl md:rounded-3xl bg-black/80 border border-white/15 flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 text-black font-bold flex items-center justify-center text-base md:text-lg shadow-md">
+                R
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm md:text-base">Rahul K.</h4>
+                <div class="flex items-center gap-1">
+                  <span class="text-[10px] md:text-xs text-gray-400">Verified Google Review</span>
+                  <span class="material-symbols-outlined text-emerald-400 text-xs">verified</span>
+                </div>
+              </div>
+            </div>
+            <svg class="w-5 h-5 md:w-6 md:h-6 opacity-80" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+          </div>
+          <div class="flex text-amber-400 mb-3 text-xs md:text-sm">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+          </div>
+          <p class="text-xs md:text-sm text-gray-200 leading-relaxed italic">"Mixtail transformed our wedding bar into a theatrical experience. The flair show was the talk of the night, and the molecular drinks were mind-blowing!"</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[10px] md:text-xs text-gray-400">
+          <span>Posted on Google</span>
+          <span class="text-gray-500">Nashik, India</span>
+        </div>
+      </div>
+
+      <!-- Google Review 2 -->
+      <div class="glass-panel p-6 md:p-8 rounded-2xl md:rounded-3xl bg-black/80 border border-white/15 flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 text-white font-bold flex items-center justify-center text-base md:text-lg shadow-md">
+                S
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm md:text-base">Sneha P.</h4>
+                <div class="flex items-center gap-1">
+                  <span class="text-[10px] md:text-xs text-gray-400">Verified Google Review</span>
+                  <span class="material-symbols-outlined text-emerald-400 text-xs">verified</span>
+                </div>
+              </div>
+            </div>
+            <svg class="w-5 h-5 md:w-6 md:h-6 opacity-80" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+          </div>
+          <div class="flex text-amber-400 mb-3 text-xs md:text-sm">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+          </div>
+          <p class="text-xs md:text-sm text-gray-200 leading-relaxed italic">"Unmatched professionalism for our corporate launch. They branded the cocktails with our logo using edible prints. Pure class and hospitality!"</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[10px] md:text-xs text-gray-400">
+          <span>Posted on Google</span>
+          <span class="text-gray-500">Pune, India</span>
+        </div>
+      </div>
+
+      <!-- Google Review 3 -->
+      <div class="glass-panel p-6 md:p-8 rounded-2xl md:rounded-3xl bg-black/80 border border-white/15 flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-400 text-white font-bold flex items-center justify-center text-base md:text-lg shadow-md">
+                A
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm md:text-base">Amit S.</h4>
+                <div class="flex items-center gap-1">
+                  <span class="text-[10px] md:text-xs text-gray-400">Verified Google Review</span>
+                  <span class="material-symbols-outlined text-emerald-400 text-xs">verified</span>
+                </div>
+              </div>
+            </div>
+            <svg class="w-5 h-5 md:w-6 md:h-6 opacity-80" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+          </div>
+          <div class="flex text-amber-400 mb-3 text-xs md:text-sm">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+          </div>
+          <p class="text-xs md:text-sm text-gray-200 leading-relaxed italic">"Best cocktail setup in Maharashtra! Their team managed a crowd of 300+ guests effortlessly with top-tier craft drinks."</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[10px] md:text-xs text-gray-400">
+          <span>Posted on Google</span>
+          <span class="text-gray-500">Mumbai, India</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="py-12 md:py-section-gap px-4 md:px-container-padding-desktop max-w-[1440px] mx-auto relative overflow-hidden z-10 border-t border-white/10" id="contact">
+  <div class="light-leak top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50"></div>
+  <div class="glass-panel p-6 sm:p-10 md:p-20 rounded-2xl md:rounded-3xl relative bg-black/60 backdrop-blur-xl text-center border border-white/20 shadow-2xl z-10">
+    <img src="logo-icon.png" alt="Mixtail Logo" class="h-16 md:h-24 w-auto mx-auto mb-4 md:mb-6 object-contain">
+    <h2 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display-md font-bold text-white mb-4 md:mb-6 leading-tight max-w-4xl mx-auto">Ready to Elevate Your Celebration?</h2>
+    <p class="text-base sm:text-xl md:text-2xl font-body-lg text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto">Let's create unforgettable moments—one cocktail at a time.</p>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full">
+      <a href="tel:+918668725038" class="w-full sm:w-auto px-8 py-4 md:px-10 md:py-5 rounded-full font-headline-lg text-sm md:text-base text-white transition-all flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 shadow-2xl border border-amber-400/30">
+        <span class="material-symbols-outlined text-xl md:text-2xl">call</span>
+        <span>Book Now</span>
+      </a>
+      <a href="https://wa.me/message/EZD4Y7U7A3S7N1" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 md:px-10 md:py-5 rounded-full font-headline-lg text-sm md:text-base text-white transition-all flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 shadow-2xl border border-emerald-400/30">
+        <span class="material-symbols-outlined text-xl md:text-2xl">chat</span>
+        <span>WhatsApp Us</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</div> <!-- End Post-Hero Ambient Gradient Container -->
+</main>
+
+<!-- Footer -->
+<footer class="bg-black/85 backdrop-blur-md py-10 md:py-section-gap px-4 md:px-container-padding-desktop border-t border-white/10 relative z-10">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-gutter">
+<div class="col-span-1 sm:col-span-2 md:col-span-1">
+<div class="flex items-center mb-4 md:mb-6">
+  <img src="logo-icon.png" alt="Mixtail Logo" class="h-16 md:h-24 w-auto object-contain">
+</div>
+<p class="font-body-md text-xs md:text-sm text-gray-300">The leading mobile bar and mixology service in Maharashtra, redefining event hospitality one cocktail at a time.</p>
+</div>
+<div>
+<h6 class="text-white font-bold text-sm md:text-base mb-4 md:mb-6">Services</h6>
+<ul class="space-y-3 md:space-y-4 font-label-sm text-xs md:text-sm text-gray-300">
+<li><a class="hover:text-white transition-colors" href="#services">Professional Mixologists</a></li>
+<li><a class="hover:text-white transition-colors" href="#services">Premium Mobile Bar Setup</a></li>
+<li><a class="hover:text-white transition-colors" href="#signature-experiences">Molecular Mixology</a></li>
+<li><a class="hover:text-white transition-colors" href="#signature-experiences">Flair Bartending</a></li>
+<li><a class="hover:text-white transition-colors" href="#events-we-serve">Event Bar Catering</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-white font-bold text-sm md:text-base mb-4 md:mb-6">Quick Links</h6>
+<ul class="space-y-3 md:space-y-4 font-label-sm text-xs md:text-sm text-gray-300">
+<li><a class="hover:text-white transition-colors" href="#events-we-serve">Events We Serve</a></li>
+<li><a class="hover:text-white transition-colors" href="#signature-experiences">Signature Experiences</a></li>
+<li><a class="hover:text-white transition-colors" href="#gallery">Liquid Art Gallery</a></li>
+<li><a class="hover:text-white transition-colors" href="#instagram">Instagram</a></li>
+<li><a class="hover:text-white transition-colors" href="#google-reviews">Google Reviews</a></li>
+<li><a class="hover:text-white transition-colors" href="#contact">Book Event</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-white font-bold text-sm md:text-base mb-4 md:mb-6">Connect</h6>
+<p class="font-body-md text-xs md:text-sm text-gray-300 mb-4">Nashik, Maharashtra, India.</p>
+<div class="flex items-center gap-3">
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/themixtail?igsh=MTI1MTE2dGg2ajYwcg==" target="_blank" rel="noopener noreferrer" title="Instagram" class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:via-pink-500 hover:to-purple-600 transition-all shadow-lg">
+    <svg class="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    </svg>
+  </a>
+  <!-- WhatsApp -->
+  <a href="https://wa.me/message/EZD4Y7U7A3S7N1" target="_blank" rel="noopener noreferrer" title="WhatsApp" class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-emerald-600 transition-all shadow-lg">
+    <svg class="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+  </a>
+  <!-- Google Review -->
+  <a href="https://g.page/r/CWNIB4LZk0j_EBM/review" target="_blank" rel="noopener noreferrer" title="Google Reviews" class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all shadow-lg">
+    <svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24">
+      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+    </svg>
+  </a>
+  <!-- Phone -->
+  <a href="tel:+918668725038" title="Call Us" class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-amber-500 transition-all shadow-lg">
+    <span class="material-symbols-outlined text-lg md:text-xl text-white">phone_iphone</span>
+  </a>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Service Card Details Modal Overlay -->
+<div id="card-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-xl p-4 md:p-6 overflow-y-auto">
+  <div class="glass-panel relative w-full max-w-2xl bg-black/90 border border-white/20 rounded-3xl p-6 md:p-10 shadow-2xl my-auto max-h-[90vh] overflow-y-auto">
+    <button onclick="closeCardModal()" class="absolute top-4 right-4 w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all cursor-pointer z-10">
+      <span class="material-symbols-outlined text-lg md:text-xl">close</span>
+    </button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<!-- Full Gallery Modal Overlay -->
+<div id="full-gallery-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-xl p-4 md:p-8 overflow-y-auto">
+  <div class="glass-panel relative w-full max-w-6xl bg-black/95 border border-white/20 rounded-3xl p-5 md:p-10 shadow-2xl my-auto max-h-[92vh] flex flex-col">
+    <div class="flex items-center justify-between mb-4 md:mb-6 pb-3 md:pb-4 border-b border-white/10">
+      <div>
+        <h3 class="text-xl sm:text-2xl md:text-4xl font-display-md font-bold text-white">Full Art Gallery</h3>
+        <p class="text-[10px] md:text-sm text-gray-400 font-body-md mt-0.5">Explore our complete collection of event photos &amp; live videos</p>
+      </div>
+      <button onclick="closeFullGalleryModal()" class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all cursor-pointer">
+        <span class="material-symbols-outlined text-lg md:text-xl">close</span>
+      </button>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-6 overflow-x-auto pb-2 scrollbar-none">
+      <button id="filter-all-btn" onclick="filterGallery('all')" class="px-4 py-2 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-bold border border-white/30 bg-white/20 text-white transition-all whitespace-nowrap">All Media</button>
+      <button id="filter-photos-btn" onclick="filterGallery('photos')" class="px-4 py-2 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-bold border border-white/20 bg-white/5 text-gray-300 hover:text-white transition-all whitespace-nowrap">Photos</button>
+      <button id="filter-videos-btn" onclick="filterGallery('videos')" class="px-4 py-2 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-bold border border-white/20 bg-white/5 text-gray-300 hover:text-white transition-all whitespace-nowrap">Videos</button>
+    </div>
+
+    <!-- Scrollable Grid inside Modal -->
+    <div id="full-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 overflow-y-auto pr-1 max-h-[60vh]"></div>
+  </div>
+</div>
+
+<!-- Scroll Scrubbing Animation & Modal Script -->
+<script>
+    function toggleMobileMenu() {
+        const drawer = document.getElementById('mobile-drawer');
+        if (!drawer) return;
+        if (drawer.classList.contains('translate-x-full')) {
+            drawer.classList.remove('translate-x-full');
+            drawer.classList.add('translate-x-0');
+            document.body.style.overflow = 'hidden';
+        } else {
+            drawer.classList.remove('translate-x-0');
+            drawer.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+        }
+    }
+
+    const cardData = {
+        1: {
+            title: "Expert Mixologists for Every Occasion",
+            p1: "At Mixtail Bar Service, our professional mixologists bring creativity, precision, and passion to every event. Whether it's a luxury wedding, corporate gathering, or private celebration, we craft cocktails that are perfectly balanced and beautifully presented.",
+            p2: "Our team is trained in classic cocktails, modern mixology, premium spirits, and guest interaction to ensure every drink becomes part of the experience.",
+            offerHeading: "What We Offer",
+            offers: [
+                "Certified & experienced mixologists",
+                "Premium cocktail preparation",
+                "Signature & classic cocktails",
+                "Customized drink menus",
+                "Professional guest service",
+                "Hygienic preparation standards"
+            ]
+        },
+        2: {
+            title: "Elegant Bar Setups That Impress",
+            p1: "A great bar is more than a serving station—it's a centerpiece. Our premium mobile bar setups are designed to match your event's theme and create a sophisticated atmosphere.",
+            p2: "From elegant weddings to stylish corporate events, every setup is planned with attention to detail.",
+            offerHeading: "Features",
+            offers: [
+                "Premium bar décor",
+                "Stylish glassware arrangement",
+                "Decorative lighting",
+                "Garnish station",
+                "Organized serving area"
+            ]
+        },
+        3: {
+            title: "Signature Cocktails Designed for Your Event",
+            p1: "Every celebration is unique, and so should the drinks. We create customized cocktail menus based on your preferences, event theme, and guest profile.",
+            p2: "Whether you prefer tropical flavours, premium classics, or unique signature creations, we'll craft a menu that complements your celebration.",
+            offerHeading: "You Can Customize",
+            offers: [
+                "Signature cocktails",
+                "Seasonal drinks",
+                "Wedding-themed cocktails",
+                "Corporate branding on menus",
+                "Alcoholic & non-alcoholic options"
+            ]
+        },
+        4: {
+            title: "Where Science Meets Mixology",
+            p1: "Create unforgettable moments with interactive molecular cocktails that surprise and delight your guests.",
+            p2: "Our molecular menu adds creativity and visual excitement, making every drink an experience. Perfect for weddings, luxury parties, and premium corporate events.",
+            offerHeading: "Molecular Specialties",
+            offers: [
+                "Smoke Cocktails",
+                "Cocktail Caviar",
+                "Jello Shots",
+                "Cocktail Spheres",
+                "Dry Ice Effects",
+                "Bubble Cocktails"
+            ]
+        },
+        5: {
+            title: "Entertainment Behind the Bar",
+            p1: "Our flair bartenders combine exceptional drink-making skills with exciting bottle tricks and showmanship, turning cocktail service into live entertainment.",
+            p2: "Ideal for cocktail nights, weddings, and private parties where you want guests to remember the experience.",
+            offerHeading: "Highlights",
+            offers: [
+                "Bottle spinning",
+                "Flair performances",
+                "Interactive guest engagement",
+                "Stylish cocktail presentation",
+                "High-energy entertainment"
+            ]
+        },
+        6: {
+            title: "Service That Leaves a Lasting Impression",
+            p1: "Outstanding hospitality is at the heart of every Mixtail event. Our team is professional, courteous, well-groomed, and committed to providing a seamless experience for you and your guests.",
+            p2: "From setup to the final drink, we focus on quality service and attention to detail.",
+            offerHeading: "Our Promise",
+            offers: [
+                "Professional bartenders",
+                "Friendly & attentive service",
+                "Clean & organized workstations",
+                "Timely setup and execution",
+                "Consistent quality",
+                "Guest-first approach"
+            ]
+        }
+    };
+
+    const allGalleryImages = [
+        "20260224_134347-COLLAGE.jpg",
+        "20260404_194929(1).jpg",
+        "20260404_194936.jpg",
+        "20260404_194946.jpg",
+        "20260404_194959.jpg",
+        "20260404_200646.jpg",
+        "20260404_201804.jpg",
+        "20260404_203843.jpg",
+        "20260404_220159(1).jpg",
+        "20260404_232459(0)(1).jpg",
+        "20260404_232459(0)(1)~3.jpg",
+        "20260405_150146.jpg",
+        "20260503_192200.jpg",
+        "20260504_232236.jpg",
+        "20260506_180419.jpg",
+        "20260507_021200.jpg",
+        "20260524_203837(1).jpg",
+        "20260524_203837.jpg",
+        "20260524_210006(1).jpg",
+        "20260615_194420.jpg",
+        "20260615_194445.jpg",
+        "IMG_20251122_220416136.jpg",
+        "IMG_20251122_232028413~2.jpg",
+        "IMG_20251124_200940655.jpg",
+        "IMG_20251129_225236226.jpg",
+        "IMG_20251220_191048824~2.jpg",
+        "IMG_20260118_002327666.jpg",
+        "IMG_20260118_194515189.jpg",
+        "IMG_20260203_212055654.jpg",
+        "IMG_20260203_234003848~2.jpg",
+        "IMG_20260221_185112414.jpg",
+        "PXL_20260203_155117979~4.jpg",
+        "SaveClip.App_705705815_17904658770423926_3181061972752818581_n.jpg"
+    ];
+
+    const allGalleryVideos = [
+        "VID_20260131_213853976.mp4",
+        "lv_0_20251029123943.mp4",
+        "lv_0_20251128121409.mp4",
+        "lv_0_20251203103043.mp4",
+        "lv_0_20251204181241.mp4",
+        "lv_0_20251229104200.mp4",
+        "lv_0_20260213121026.mp4",
+        "lv_0_20260427110703.mp4",
+        "lv_0_20260507024218.mp4",
+        "lv_0_20260507180440.mp4",
+        "lv_0_20260509122713.mp4",
+        "lv_0_20260703203607.mp4"
+    ];
+
+    let currentFilter = 'all';
+
+    function openCardModal(cardId) {
+        const data = cardData[cardId];
+        if (!data) return;
+
+        const modal = document.getElementById('card-modal');
+        const content = document.getElementById('modal-content');
+
+        const offersHtml = data.offers.map(item => `
+            <li class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-amber-400 text-lg">check_circle</span>
+                <span>${item}</span>
+            </li>
+        `).join('');
+
+        content.innerHTML = `
+            <h3 class="text-2xl md:text-4xl font-display-md font-bold text-white mb-4 md:mb-6 leading-snug">${data.title}</h3>
+            <p class="font-body-lg text-sm md:text-base text-gray-200 mb-3 md:mb-4 leading-relaxed">${data.p1}</p>
+            <p class="font-body-lg text-sm md:text-base text-gray-200 mb-6 md:mb-8 leading-relaxed">${data.p2}</p>
+            <h4 class="text-lg md:text-2xl font-display-md font-bold text-white mb-3 md:mb-4 border-b border-white/20 pb-2 md:pb-3">${data.offerHeading}</h4>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 md:gap-3 mb-6 md:mb-8 text-gray-200 text-xs md:text-sm font-body-md">
+                ${offersHtml}
+            </ul>
+            <div class="flex justify-end gap-4 pt-3 md:pt-4 border-t border-white/10">
+                <a href="tel:+918668725038" class="px-6 py-3 md:px-8 md:py-3.5 rounded-full font-label-sm text-xs md:text-sm text-white transition-transform inline-block">Book Now</a>
+            </div>
+        `;
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeCardModal() {
+        const modal = document.getElementById('card-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+    }
+
+    // Full Gallery Modal Controllers with Media Filtering
+    function filterGallery(type) {
+        currentFilter = type;
+        const grid = document.getElementById('full-gallery-grid');
+
+        ['all', 'photos', 'videos'].forEach(t => {
+            const btn = document.getElementById(`filter-${t}-btn`);
+            if (btn) {
+                if (t === type) {
+                    btn.className = "px-4 py-2 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-bold border border-white/30 bg-white/20 text-white transition-all shadow-lg whitespace-nowrap";
+                } else {
+                    btn.className = "px-4 py-2 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-bold border border-white/20 bg-white/5 text-gray-300 hover:text-white transition-all whitespace-nowrap";
+                }
+            }
+        });
+
+        let html = '';
+
+        if (type === 'all' || type === 'photos') {
+            html += allGalleryImages.map((imgSrc, idx) => `
+                <div class="glass-panel group relative rounded-2xl overflow-hidden h-[240px] sm:h-[300px] cursor-pointer">
+                    <img class="w-full h-full object-cover" src="gallery-images/${imgSrc}" alt="Mixtail Event Gallery ${idx + 1}"/>
+                </div>
+            `).join('');
+        }
+
+        if (type === 'all' || type === 'videos') {
+            html += allGalleryVideos.map((vidSrc, idx) => `
+                <div class="glass-panel group relative rounded-2xl overflow-hidden h-[240px] sm:h-[300px] cursor-pointer">
+                    <video class="w-full h-full object-cover" controls loop muted playsinline src="gallery-videos/${vidSrc}"></video>
+                    <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center pointer-events-none">
+                        <span class="material-symbols-outlined text-white text-base">play_arrow</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        grid.innerHTML = html;
+    }
+
+    function openFullGalleryModal() {
+        const modal = document.getElementById('full-gallery-modal');
+        filterGallery('all');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeFullGalleryModal() {
+        const modal = document.getElementById('full-gallery-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.glass-panel').forEach(card => {
+        card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+        observer.observe(card);
+    });
+
+    (function() {
+        const TOTAL_FRAMES = 300;
+        const images = new Array(TOTAL_FRAMES);
+        let loadedCount = 0;
+
+        const canvas = document.getElementById('hero-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        // Register GSAP ScrollTrigger
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+        }
+
+        // Cinematic Storytelling Overlay Timing Sequence
+        const storyPhrases = [
+            { id: 'story-text-0', start: 0.02, p1: 0.08, p2: 0.28, end: 0.33 },
+            { id: 'story-text-1', start: 0.34, p1: 0.40, p2: 0.60, end: 0.65 },
+            { id: 'story-text-2', start: 0.66, p1: 0.72, p2: 0.94, end: 0.99 }
+        ];
+
+        function updateStoryOverlay(progress) {
+            storyPhrases.forEach(phrase => {
+                const el = document.getElementById(phrase.id);
+                if (!el) return;
+
+                if (progress < phrase.start || progress > phrase.end) {
+                    el.style.opacity = '0';
+                    el.style.transform = progress < phrase.start ? 'translateY(20px)' : 'translateY(-20px)';
+                } else if (progress >= phrase.start && progress < phrase.p1) {
+                    const t = (progress - phrase.start) / (phrase.p1 - phrase.start);
+                    el.style.opacity = t.toFixed(3);
+                    el.style.transform = `translateY(${(1 - t) * 20}px)`;
+                } else if (progress >= phrase.p1 && progress <= phrase.p2) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0px)';
+                } else if (progress > phrase.p2 && progress <= phrase.end) {
+                    const t = (progress - phrase.p2) / (phrase.end - phrase.p2);
+                    el.style.opacity = (1 - t).toFixed(3);
+                    el.style.transform = `translateY(${-t * 20}px)`;
+                }
+            });
+        }
+
+        function getFramePath(index) {
+            const frameNumber = String(index + 1).padStart(3, '0');
+            return `./frames/frame_${frameNumber}.jpg`;
+        }
+
+        function preloadImages() {
+            for (let i = 0; i < TOTAL_FRAMES; i++) {
+                const img = new Image();
+                img.src = getFramePath(i);
+                
+                img.onload = () => {
+                    loadedCount++;
+                    images[i] = img;
+                    if (i === 0) {
+                        resizeCanvas();
+                        drawFrame(0);
+                    }
+                };
+                
+                img.onerror = () => {
+                    const retryImg = new Image();
+                    retryImg.src = getFramePath(i);
+                    retryImg.onload = () => {
+                        images[i] = retryImg;
+                        loadedCount++;
+                    };
+                    retryImg.onerror = () => {
+                        loadedCount++;
+                    };
+                };
+            }
+        }
+
+        function getBestLoadedImage(targetIndex) {
+            const roundedIndex = Math.max(0, Math.min(TOTAL_FRAMES - 1, Math.round(targetIndex)));
+            
+            if (images[roundedIndex] && images[roundedIndex].complete && images[roundedIndex].naturalWidth > 0) {
+                return images[roundedIndex];
+            }
+            
+            for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+                const prev = roundedIndex - offset;
+                if (prev >= 0 && images[prev] && images[prev].complete && images[prev].naturalWidth > 0) {
+                    return images[prev];
+                }
+                const next = roundedIndex + offset;
+                if (next < TOTAL_FRAMES && images[next] && images[next].complete && images[next].naturalWidth > 0) {
+                    return images[next];
+                }
+            }
+            
+            return null;
+        }
+
+        // Dedicated Mobile vs Desktop Canvas Rendering System
+        function drawFrame(frameIndex) {
+            const img = getBestLoadedImage(frameIndex);
+            if (!img) return;
+
+            const cW = canvas.width;
+            const cH = canvas.height;
+            if (cW === 0 || cH === 0) return;
+
+            const isMobileScreen = window.innerWidth <= 768;
+            let renderW, renderH, offsetX, offsetY;
+
+            if (isMobileScreen) {
+                // Mobile-only Cover Scale Mode: Glass occupies 100% of Viewport Height, 0 black letterbox bars
+                const imgW = img.naturalWidth || 1920;
+                const imgH = img.naturalHeight || 1080;
+
+                // 1.25x scale factor ensures glass is zoomed in as main focal point on mobile portrait screens
+                const scale = Math.max(cW / imgW, cH / imgH) * 1.25;
+
+                renderW = imgW * scale;
+                renderH = imgH * scale;
+
+                offsetX = (cW - renderW) / 2;
+                offsetY = (cH - renderH) / 2;
+            } else {
+                // Desktop Landscape Mode (EXACT 100% baseline desktop behavior preserved)
+                const targetRatio = 16 / 9;
+                const canvasRatio = cW / cH;
+
+                if (canvasRatio > targetRatio) {
+                    renderH = cH;
+                    renderW = cH * targetRatio;
+                    offsetX = (cW - renderW) / 2;
+                    offsetY = 0;
+                } else {
+                    renderW = cW;
+                    renderH = cW / targetRatio;
+                    offsetX = 0;
+                    offsetY = (cH - renderH) / 2;
+                }
+            }
+
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, cW, cH);
+            ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
+        }
+
+        function resizeCanvas() {
+            if (!canvas) return;
+            const dpr = window.devicePixelRatio || 1;
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            canvas.width = Math.floor(width * dpr);
+            canvas.height = Math.floor(height * dpr);
+
+            drawFrame(0);
+        }
+
+        // Initialize GSAP ScrollTrigger
+        function initGSAPScrollTrigger() {
+            if (typeof ScrollTrigger === 'undefined') return;
+
+            ScrollTrigger.create({
+                trigger: "#hero-scroll-container",
+                start: "top top",
+                end: "+=160%",
+                pin: "#hero-sticky",
+                pinSpacing: true,
+                scrub: 0.4,
+                onUpdate: (self) => {
+                    const progress = self.progress;
+
+                    const targetFrame = progress * (TOTAL_FRAMES - 1);
+                    drawFrame(targetFrame);
+
+                    updateStoryOverlay(progress);
+
+                    const scrollIndicator = document.getElementById('scroll-down-indicator');
+                    if (scrollIndicator) {
+                        if (progress >= 0.85) {
+                            scrollIndicator.classList.add('opacity-0', 'pointer-events-none', 'scale-90');
+                            scrollIndicator.classList.remove('opacity-100', 'scale-100');
+                        } else {
+                            scrollIndicator.classList.add('opacity-100', 'scale-100');
+                            scrollIndicator.classList.remove('opacity-0', 'scale-90');
+                        }
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        preloadImages();
+        initGSAPScrollTrigger();
+    })();
+</script>
+</body></html>
