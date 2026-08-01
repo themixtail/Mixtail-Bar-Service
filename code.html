@@ -152,6 +152,14 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* Remove Download Buttons & Video Context Controls */
+        video::-internal-media-controls-download-button,
+        video::-webkit-media-controls-download-button {
+            display: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
         .glass-panel {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
@@ -369,23 +377,37 @@
 <!-- Post-Hero Container Seamlessly Aligned to the Unpinned Hero Seam -->
 <div class="ambient-gradient-bg relative z-10 overflow-x-hidden">
 
-<!-- About / Metrics Grid (Seamless Top Connection) -->
+<!-- About / Metrics Grid (Subtle Gradient Separators & Gold-White Luxury Theme) -->
 <section class="py-10 md:py-16 px-4 md:px-container-padding-desktop max-w-[1440px] mx-auto relative z-10 border-b border-white/10">
-  <div class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/15 relative z-10">
-    <div class="p-4 md:p-8 text-center">
-      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2">100+</span>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-0 relative z-10">
+    <!-- Metric 1 -->
+    <div class="p-4 md:p-8 text-center relative">
+      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2 drop-shadow-[0_0_15px_rgba(245,158,11,0.25)]">100+</span>
       <p class="font-label-sm text-gray-300 uppercase tracking-widest text-[10px] sm:text-xs md:text-sm">Successful Events</p>
+      <div class="hidden md:block absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-gradient-to-b from-transparent via-amber-400/30 to-transparent"></div>
+      <div class="block md:hidden absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-gradient-to-b from-transparent via-amber-400/20 to-transparent"></div>
     </div>
-    <div class="p-4 md:p-8 text-center">
-      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2">100+</span>
+
+    <!-- Metric 2 -->
+    <div class="p-4 md:p-8 text-center relative">
+      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2 drop-shadow-[0_0_15px_rgba(245,158,11,0.25)]">100+</span>
       <p class="font-label-sm text-gray-300 uppercase tracking-widest text-[10px] sm:text-xs md:text-sm">Signature Cocktails</p>
+      <div class="hidden md:block absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-gradient-to-b from-transparent via-amber-400/30 to-transparent"></div>
+      <div class="block md:hidden absolute bottom-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-amber-400/20 to-transparent"></div>
     </div>
-    <div class="p-4 md:p-8 text-center pt-4 md:pt-8">
-      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2">Nashik</span>
+
+    <!-- Metric 3 -->
+    <div class="p-4 md:p-8 text-center relative">
+      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2 drop-shadow-[0_0_15px_rgba(245,158,11,0.25)]">Nashik</span>
       <p class="font-label-sm text-gray-300 uppercase tracking-widest text-[10px] sm:text-xs md:text-sm">Base Operations</p>
+      <div class="hidden md:block absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-gradient-to-b from-transparent via-amber-400/30 to-transparent"></div>
+      <div class="block md:hidden absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-gradient-to-b from-transparent via-amber-400/20 to-transparent"></div>
+      <div class="block md:hidden absolute bottom-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-amber-400/20 to-transparent"></div>
     </div>
-    <div class="p-4 md:p-8 text-center pt-4 md:pt-8">
-      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2">4.9/5</span>
+
+    <!-- Metric 4 -->
+    <div class="p-4 md:p-8 text-center relative">
+      <span class="font-display-md text-2xl sm:text-4xl md:text-5xl font-bold text-white block mb-1 md:mb-2 drop-shadow-[0_0_15px_rgba(245,158,11,0.25)]">4.9/5</span>
       <p class="font-label-sm text-gray-300 uppercase tracking-widest text-[10px] sm:text-xs md:text-sm">Google Rating</p>
     </div>
   </div>
@@ -616,7 +638,7 @@
       <img class="w-full h-full object-cover" loading="lazy" decoding="async" src="gallery-images/20260404_194929(1).jpg" alt="Mixtail Event Photo 1"/>
     </div>
     <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
-      <video class="w-full h-full object-cover" preload="metadata" poster="gallery-images/20260404_194929(1).jpg" autoplay loop muted playsinline src="gallery-videos/VID_20260131_213853976.mp4"></video>
+      <video class="w-full h-full object-cover" preload="metadata" poster="gallery-images/20260404_194929(1).jpg" autoplay loop muted playsinline controlsList="nodownload nofullscreen noremoteplayback" disablePictureInPicture src="gallery-videos/VID_20260131_213853976.mp4"></video>
       <div class="absolute top-4 right-4 w-9 h-9 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center pointer-events-none">
         <span class="material-symbols-outlined text-white text-lg md:text-xl">play_arrow</span>
       </div>
@@ -625,7 +647,7 @@
       <img class="w-full h-full object-cover" loading="lazy" decoding="async" src="gallery-images/20260404_194936.jpg" alt="Mixtail Event Photo 2"/>
     </div>
     <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
-      <video class="w-full h-full object-cover" preload="metadata" poster="gallery-images/20260404_194936.jpg" autoplay loop muted playsinline src="gallery-videos/lv_0_20260507180440.mp4"></video>
+      <video class="w-full h-full object-cover" preload="metadata" poster="gallery-images/20260404_194936.jpg" autoplay loop muted playsinline controlsList="nodownload nofullscreen noremoteplayback" disablePictureInPicture src="gallery-videos/lv_0_20260507180440.mp4"></video>
       <div class="absolute top-4 right-4 w-9 h-9 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center pointer-events-none">
         <span class="material-symbols-outlined text-white text-lg md:text-xl">play_arrow</span>
       </div>
@@ -634,7 +656,7 @@
       <img class="w-full h-full object-cover" loading="lazy" decoding="async" src="gallery-images/20260404_194946.jpg" alt="Mixtail Event Photo 3"/>
     </div>
     <div class="glass-panel group relative rounded-2xl overflow-hidden h-[280px] sm:h-[360px] cursor-pointer">
-      <video class="w-full h-full object-cover" preload="metadata" poster="gallery-images/20260404_194946.jpg" autoplay loop muted playsinline src="gallery-videos/VID_20260131_213853976.mp4"></video>
+      <video class="w-full h-full object-cover" preload="metadata" poster="gallery-images/20260404_194946.jpg" autoplay loop muted playsinline controlsList="nodownload nofullscreen noremoteplayback" disablePictureInPicture src="gallery-videos/VID_20260131_213853976.mp4"></video>
       <div class="absolute top-4 right-4 w-9 h-9 md:w-10 md:h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center pointer-events-none">
         <span class="material-symbols-outlined text-white text-lg md:text-xl">play_arrow</span>
       </div>
@@ -1074,7 +1096,7 @@
         if (type === 'all' || type === 'videos') {
             html += allGalleryVideos.map((vidSrc, idx) => `
                 <div class="glass-panel group relative rounded-2xl overflow-hidden h-[240px] sm:h-[300px] cursor-pointer">
-                    <video class="w-full h-full object-cover" preload="metadata" poster="gallery-images/20260404_194929(1).jpg" controls loop muted playsinline src="gallery-videos/${vidSrc}"></video>
+                    <video class="w-full h-full object-cover" preload="metadata" poster="gallery-images/20260404_194929(1).jpg" controls loop muted playsinline controlsList="nodownload nofullscreen noremoteplayback" disablePictureInPicture src="gallery-videos/${vidSrc}"></video>
                     <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center pointer-events-none">
                         <span class="material-symbols-outlined text-white text-base">play_arrow</span>
                     </div>
