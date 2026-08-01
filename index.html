@@ -188,7 +188,8 @@
         /* Seamless Color Match + Smooth Ambient Gradient Fading */
         .ambient-gradient-bg {
             background: 
-                radial-gradient(ellipse 80% 50% at 50% 10%, rgba(245, 158, 11, 0.12) 0%, transparent 65%),
+                linear-gradient(to bottom, #000000 0%, rgba(0, 0, 0, 0.95) 80px, transparent 180px),
+                radial-gradient(ellipse 80% 50% at 50% 25%, rgba(245, 158, 11, 0.12) 0%, transparent 65%),
                 radial-gradient(ellipse 60% 40% at 15% 45%, rgba(168, 85, 247, 0.10) 0%, transparent 55%),
                 radial-gradient(ellipse 60% 40% at 85% 65%, rgba(16, 185, 129, 0.08) 0%, transparent 55%),
                 radial-gradient(ellipse 70% 50% at 50% 90%, rgba(239, 68, 68, 0.08) 0%, transparent 60%),
@@ -359,6 +360,9 @@
         <div class="w-1.5 h-2.5 md:h-3 bg-white rounded-full animate-bounce"></div>
       </div>
     </div>
+
+    <!-- Smooth Camouflage Gradient Mask to Eliminate Hero Partition Seam -->
+    <div class="absolute bottom-0 left-0 right-0 h-36 sm:h-48 md:h-64 bg-gradient-to-b from-transparent via-black/85 to-black pointer-events-none z-15"></div>
   </div>
 </section>
 
