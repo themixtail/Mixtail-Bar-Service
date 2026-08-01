@@ -716,10 +716,14 @@
       </div>
     </div>
 
-    <!-- Dynamic Real Google Reviews Grid -->
-    <div id="google-reviews-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 relative z-10">
-      <!-- Dynamically populated real Google Business Profile reviews -->
+    <!-- Live Auto-Syncing Google Business Profile Reviews Elfsight Widget -->
+    <div class="w-full relative z-10 glass-panel p-4 md:p-6 rounded-2xl md:rounded-3xl border border-white/15 bg-black/80 shadow-2xl">
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-7b1e8de5-f955-4d12-8bd3-2ed17cbbc950" data-elfsight-app-lazy></div>
     </div>
+
+    <!-- Fallback container for dynamic reviews loader -->
+    <div id="google-reviews-grid" class="hidden"></div>
   </div>
 </section>
 
