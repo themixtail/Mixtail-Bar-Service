@@ -1214,6 +1214,10 @@
         const TOTAL_FRAMES = 300;
         const images = new Array(TOTAL_FRAMES);
         let loadedCount = 0;
+        let currentProgress = 0;
+        let currentFrame = 0;
+        let lastCanvasWidth = 0;
+        let lastCanvasHeight = 0;
 
         const canvas = document.getElementById('hero-canvas');
         if (!canvas) return;
@@ -1267,9 +1271,8 @@
                 img.onload = () => {
                     loadedCount++;
                     images[i] = img;
-                    if (i === 0) {
-                        resizeCanvas();
-                        drawFrame(0);
+                    if (i === 0 || i === Math.round(currentFrame)) {
+                        drawFrame(currentFrame);
                     }
                 };
                 
@@ -1310,7 +1313,8 @@
 
         // Dedicated Mobile vs Desktop Canvas Rendering System
         function drawFrame(frameIndex) {
-            const img = getBestLoadedImage(frameIndex);
+            currentFrame = Math.max(0, Math.min(TOTAL_FRAMES - 1, frameIndex));
+            const img = getBestLoadedImage(currentFrame);
             if (!img) return;
 
             const cW = canvas.width;
@@ -1362,10 +1366,23 @@
             const width = window.innerWidth;
             const height = window.innerHeight;
 
-            canvas.width = Math.floor(width * dpr);
-            canvas.height = Math.floor(height * dpr);
+            const targetW = Math.floor(width * dpr);
+            const targetH = Math.floor(height * dpr);
 
-            drawFrame(0);
+            // Prevent canvas reset on mobile address bar collapse/expand
+            const isMobileScreen = width <= 768;
+            if (isMobileScreen && lastCanvasWidth === targetW && Math.abs(targetH - lastCanvasHeight) < 120) {
+                drawFrame(currentFrame);
+                return;
+            }
+
+            lastCanvasWidth = targetW;
+            lastCanvasHeight = targetH;
+
+            canvas.width = targetW;
+            canvas.height = targetH;
+
+            drawFrame(currentFrame);
         }
 
         // Initialize GSAP ScrollTrigger
@@ -1378,18 +1395,17 @@
                 end: "+=160%",
                 pin: "#hero-sticky",
                 pinSpacing: true,
-                scrub: 0.4,
+                scrub: 0.3,
                 onUpdate: (self) => {
-                    const progress = self.progress;
+                    currentProgress = self.progress;
+                    currentFrame = currentProgress * (TOTAL_FRAMES - 1);
 
-                    const targetFrame = progress * (TOTAL_FRAMES - 1);
-                    drawFrame(targetFrame);
-
-                    updateStoryOverlay(progress);
+                    drawFrame(currentFrame);
+                    updateStoryOverlay(currentProgress);
 
                     const scrollIndicator = document.getElementById('scroll-down-indicator');
                     if (scrollIndicator) {
-                        if (progress >= 0.85) {
+                        if (currentProgress >= 0.85) {
                             scrollIndicator.classList.add('opacity-0', 'pointer-events-none', 'scale-90');
                             scrollIndicator.classList.remove('opacity-100', 'scale-100');
                         } else {
