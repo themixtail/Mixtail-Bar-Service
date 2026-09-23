@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url>
-    <loc>https://themixtail.in/</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://themixtail.in/og-image.png</image:loc>
-      <image:title>Mixtail Bar Service Nashik - Premium Cocktail Catering &amp; Wedding Bartenders</image:title>
-    </image:image>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://themixtail.in/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
 </urlset>
